@@ -115,6 +115,10 @@
         if(checkbox === this || checkbox === lastCheck){
           inBetween = !inBetween;
         }
+
+        if(inBetween){
+          checkbox.checked = true;
+        }
       })
     }
     
