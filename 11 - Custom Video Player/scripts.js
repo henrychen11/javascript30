@@ -4,7 +4,7 @@ const video = player.querySelector('.viewer');
 const progress = player.querySelector('.progress');
 const progressBar = player.querySelector('.progress__filled');
 const toggle = player.querySelector('.toggle');
-const skipButtons = player.querySelector('[data-skip]');
+const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
 
 //guild out function
@@ -19,7 +19,11 @@ function togglePlay() {
 
 function updateButton() {
     const icon = this.paused ? '►' : '❚ ❚';
-    console.log('update the button');
+    toggle.textContent = icon;
+}
+
+function skip(){
+    console.log("SKIPPING");
 }
 
 // hook up the event listeners
@@ -28,3 +32,4 @@ video.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
 toggle.addEventListener('click', togglePlay);
+skipButtons.forEach( button => button.addEventListener('click', skip));
