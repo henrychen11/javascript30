@@ -61,14 +61,18 @@
     const sliderImages = document.querySelectorAll('.slide-in');
     
     function checkSlide(event){
-      console.log(event);
+      
       sliderImages.forEach( image => {
-        const slideInAt = (window.scrollY + window.innereight) - slideImage.height / 2;
-        const imageBottom = sliderImage.offsetTop
+        //half way through the image
+        const slideInAt = (window.scrollY + window.innereight) - image.height / 2;
+        //bottom of the image
+        const imageBottom = image.offsetTop + image.height;
+        const isHalfShown = slideInAt > image.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
       });
-
-      window.addEventListener('scroll', debounce(checkSlide));
     }
+
+    window.addEventListener('scroll', debounce(checkSlide));
   </script>
 
   <style>
